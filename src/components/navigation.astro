@@ -1,0 +1,124 @@
+---
+---
+
+<div class="nav-container">
+  <div class="nav-logo">
+    <img src="public/images/substatik-logo.svg" alt="Logo" />
+  </div>
+  <div class="nav-menu" id="js-nav-menu">
+    <div class="menu-text">
+      <div class="text-wrapper">Menu<br />Close</div>
+    </div>
+    <div class="menu-icon">
+      <div class="toggle-line-top"></div>
+      <div class="toggle-line-bottom"></div>
+    </div>
+  </div>
+</div>
+<div class="menu-container" id="js-menu-container">
+  <p>Container Content</p>
+</div>
+
+<style>
+  .nav-container {
+    position: absolute;
+    width: 100%;
+    padding: 24px 40px;
+    background-color: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .menu-text {
+    width: 80px;
+    height: 18px;
+    overflow: hidden;
+  }
+
+  .text-wrapper {
+    font-size: 15px;
+    text-align: end;
+    transition: all 400ms ease-in-out;
+  }
+
+  .menu-icon {
+    position: relative;
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    background-color: beige;
+  }
+
+  .toggle-line-top {
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    background-color: black;
+    left: 15px;
+    top: 24px;
+    transition: all 300ms ease-in-out;
+  }
+
+  .toggle-line-bottom {
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    background-color: black;
+    left: 15px;
+    bottom: 24px;
+    transition: all 200ms ease-in-out;
+  }
+
+  .toggle-line-top.opened {
+    top: 27px;
+    transform: rotate(135deg);
+  }
+
+  .toggle-line-bottom.opened {
+    bottom: 27px;
+    transform: rotate(-135deg);
+  }
+
+  .text-wrapper.opened {
+    transform: translateY(-18px);
+  }
+
+  .menu-container {
+    position: fixed;
+    top: 100px;
+    right: -100%;
+    width: 300px;
+    height: 400px;
+    background-color: beige;
+    transition: opacity 300ms ease-out 200ms, right 300ms ease-out 0ms;
+    border-radius: 16px;
+    padding: 24px;
+    opacity: 0;
+  }
+
+  .menu-container.show {
+    right: 40px;
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const navMenu = document.getElementById("js-nav-menu");
+  const menuContainer = document.getElementById("js-menu-container");
+  const toggleLines = document.querySelectorAll(
+    ".toggle-line-top, .toggle-line-bottom, .text-wrapper"
+  );
+
+  navMenu.addEventListener("click", () => {
+    menuContainer.classList.toggle("show");
+    toggleLines.forEach((line) => line.classList.toggle("opened"));
+  });
+</script>

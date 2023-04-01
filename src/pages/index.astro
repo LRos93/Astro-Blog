@@ -1,4 +1,9 @@
 ---
+const pageTitle = "Homepage";
+
+import Navigation from "../components/navigation.astro";
+import Slider from "../components/slider.astro";
+import '../styles/global.css';
 ---
 
 <html lang="en">
@@ -7,13 +12,26 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<a href="/">Home</a>
-        <a href="/about/">About Me</a>
-        <a href="/blog/">Blog</a>
-		
-		<h1>Welcome to my first blog website</h1>
+		<Navigation />
+
+		<div class="fw-container">
+			<div class="heading-wrapper">
+				<div class="hd-subtext">
+					Design studio specializing in branding, web development and packaging design.
+				</div>
+				<div class="hd-headline">
+					Where ideas turn into meaningful digital solutions.
+				</div>
+			</div>
+			<div class="hd-project-wrapper">
+				<div class="hd-project-name">Carbon Cannabis<br>Branding and Web</div>
+				<div class="next-project-btn">Next Project</div>
+			</div>
+		</div>
+
+		<Slider />
 	</body>
 </html>
