@@ -1,7 +1,22 @@
 @font-face {
   font-family: "Hando";
-  src: url(public/fonts/Hando/Hando-Regular.woff);
+  src: url(public/fonts/Hando/Hando-Regular.woff) format("woff");
   font-weight: 400;
+}
+
+@font-face {
+  font-family: "Hando";
+  src: url(public/fonts/Hando/Hando-SemiBold.woff) format("woff");
+  font-weight: 600;
+}
+
+:root {
+  /*Colors*/
+  --primary-color: #000;
+  --secondary-color: #F4F0EA;
+  --background: #fff;
+  --accent-light: #D9FB0D;
+  --accent-dark: #66C607;
 }
 
 * {
@@ -12,7 +27,15 @@
 
 body {
   font-family: "Hando", sans-serif;
-  font-size: 1rem;
+  font-size: 16px;
+  background-color: var(--background);
+  color: var(--primary-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 96px;
+  line-height: 100px;
 }
 
 h2 {
@@ -20,8 +43,37 @@ h2 {
     line-height: 64px;
 }
 
+h3 {
+  font-size: 56px;
+  line-height: 48px;
+}
+
+h4 {
+  font-size: 32px;
+  line-height: 32px;
+  margin-bottom: 16px;
+}
+
+h5 {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+h6 {
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.smb {
+  font-weight: 600;
+}
+
 section {
-    padding: 24px 160px;
+    padding: 24px 160px 80px 160px;
+}
+
+.section-title {
+  margin: 120px 0;
 }
 
 a {
@@ -42,7 +94,7 @@ a {
 }
 
 .jf-sb {
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -99,38 +151,4 @@ a {
   z-index: 0;
 }
 
-.hd-subtext {
-  font-size: 20px;
-  line-height: 28px;
-  padding: 24px 0;
-  border-bottom: solid white 1px;
-  border-top: solid white 1px;
-  width: 390px;
-  margin-bottom: 72px;
-}
 
-.hd-headline {
-  font-size: 96px;
-  line-height: 100px;
-  width: 710px;
-  overflow: hidden;
-}
-
-.hd-headline span {
-  display: inline-block;
-  animation-name: move;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-}
-
-@keyframes move {
-  from {
-    transform: translateY(140px) skewY(5deg);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px) skewY(0deg);
-    opacity: 1;
-  }
-}

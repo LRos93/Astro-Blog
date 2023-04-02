@@ -3,14 +3,42 @@ import "../styles/global.css";
 ---
 
 <section>
-  <h2>Featured<br />work.</h2>
+  <h2 class="section-title">Featured<br />work.</h2>
 
-  <div class="container flex jf-sb">
-    <div class="featured-img">
+  <div class="ftr-project flex jf-sb">
+    <div class="featured-img" id="ftr-1">
       <img src="/public/images/test-2.webp" alt="" />
     </div>
     <div class="featured-text">
-      <h3>Sunnalight Cosmetics</h3>
+      <h4>Sunnalight Cosmetics</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+    </div>
+  </div>
+  <div class="ftr-project flex jf-sb">
+    <div class="featured-text">
+      <h4>Sunnalight Cosmetics</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+    </div>
+    <div class="featured-img" id="ftr-2">
+      <img src="/public/images/test-3.webp" alt="" />
+    </div>
+  </div>
+  <div class="ftr-project flex jf-sb">
+    <div class="featured-img" id="ftr-3">
+      <img src="/public/images/test-2.webp" alt="" />
+    </div>
+    <div class="featured-text">
+      <h4>Sunnalight Cosmetics</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -23,17 +51,25 @@ import "../styles/global.css";
 
 <style>
   .featured-img {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    cursor: url("/public/images/view-cursor.svg") 10 10;
   }
-
-  .featured-img.show {
-    opacity: 1;
-  }
-
-  .featured-img img {
+  #ftr-1 img {
     width: 900px;
-    height: 530px;
+    height: 600px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #ftr-2 img {
+    width: 700px;
+    height: 800px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #ftr-3 img {
+    width: 1000px;
+    height: 500px;
     object-fit: cover;
     object-position: center;
   }
@@ -41,32 +77,39 @@ import "../styles/global.css";
   .featured-text {
     max-width: 300px;
   }
+
+  .ftr-project {
+    margin-bottom: 160px;
+    opacity: 0;
+    transform: translateY(200px);
+    transition: all 1500ms ease-out;
+  }
+
+  .ftr-project.visible {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 </style>
 
 <script>
-  // Get the "featured-img" container element
-  const featuredImg = document.querySelector(".featured-img");
+  const elements = document.querySelectorAll(".ftr-project");
 
-  // Create a new Intersection Observer instance
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // If the "featured-img" container is in view, add the "show" class
-          featuredImg.classList.add("show");
-          // Stop observing the "featured-img" container
-          observer.unobserve(featuredImg);
+        if (entry.intersectionRatio >= 0.5) {
+          entry.target.classList.add("visible"); /* add the 'visible' class */
         }
       });
     },
-    {
-      // Set the root to the viewport
-      root: null,
-      // Set the threshold to 0.5 (when 50% of the "featured-img" container is in view)
-      threshold: 0.5,
-    }
+    { threshold: 0.5 }
   );
 
-  // Start observing the "featured-img" container
-  observer.observe(featuredImg);
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
+
+  elements.forEach((element) => {
+    observer.observe(element);
+  });
 </script>
