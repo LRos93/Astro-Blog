@@ -1,0 +1,72 @@
+---
+import "../styles/global.css";
+---
+
+<section>
+  <h2>Featured<br />work.</h2>
+
+  <div class="container flex jf-sb">
+    <div class="featured-img">
+      <img src="/public/images/test-2.webp" alt="" />
+    </div>
+    <div class="featured-text">
+      <h3>Sunnalight Cosmetics</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .featured-img.show {
+    opacity: 1;
+  }
+
+  .featured-img img {
+    width: 900px;
+    height: 530px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .featured-text {
+    max-width: 300px;
+  }
+</style>
+
+<script>
+  // Get the "featured-img" container element
+  const featuredImg = document.querySelector(".featured-img");
+
+  // Create a new Intersection Observer instance
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // If the "featured-img" container is in view, add the "show" class
+          featuredImg.classList.add("show");
+          // Stop observing the "featured-img" container
+          observer.unobserve(featuredImg);
+        }
+      });
+    },
+    {
+      // Set the root to the viewport
+      root: null,
+      // Set the threshold to 0.5 (when 50% of the "featured-img" container is in view)
+      threshold: 0.5,
+    }
+  );
+
+  // Start observing the "featured-img" container
+  observer.observe(featuredImg);
+</script>

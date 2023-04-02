@@ -1,8 +1,21 @@
 ---
+import "../styles/global.css";
 ---
 
 <div class="nav-container">
   <div class="nav-logo">
+    <img src="public/images/substatik-logo.svg" alt="Logo" />
+  </div>
+  <ul>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+<div class="nav-container-scroll">
+  <div class="nav-logo rotated">
     <img src="public/images/substatik-logo.svg" alt="Logo" />
   </div>
   <div class="nav-menu" id="js-nav-menu">
@@ -16,18 +29,30 @@
   </div>
 </div>
 <div class="menu-container" id="js-menu-container">
-  <p>Container Content</p>
+  <p></p>
 </div>
 
 <style>
-  .nav-container {
-    position: absolute;
+  .nav-container-scroll {
+    visibility: hidden;
+    top: 18px;
+    opacity: 0;
+    position: fixed;
     width: 100%;
     padding: 24px 40px;
     background-color: none;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: top;
+    mix-blend-mode: difference;
+    z-index: 9999;
+    transition: all 700ms ease-in-out;
+  }
+
+  .visible {
+    visibility: visible;
+    top: 40px;
+    opacity: 1;
   }
 
   .nav-menu {
@@ -41,11 +66,13 @@
     width: 80px;
     height: 18px;
     overflow: hidden;
+    color: white;
   }
 
   .text-wrapper {
-    font-size: 15px;
+    font-size: 16px;
     text-align: end;
+    color: white;
     transition: all 400ms ease-in-out;
   }
 
@@ -88,29 +115,40 @@
   }
 
   .text-wrapper.opened {
-    transform: translateY(-18px);
+    transform: translateY(-23px);
   }
 
   .menu-container {
     position: fixed;
-    top: 100px;
+    top: 56px;
     right: -100%;
     width: 300px;
     height: 400px;
-    background-color: beige;
+    background-color: white;
     transition: opacity 300ms ease-out 200ms, right 300ms ease-out 0ms;
-    border-radius: 16px;
+    border-radius: 0px;
     padding: 24px;
     opacity: 0;
+    z-index: 998;
   }
 
   .menu-container.show {
-    right: 40px;
+    right: 32px;
     opacity: 1;
   }
 </style>
 
 <script>
+  const navBar = document.querySelector(".nav-container-scroll");
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY >= 500) {
+      navBar.classList.add("visible");
+    } else {
+      navBar.classList.remove("visible");
+    }
+  });
+
   const navMenu = document.getElementById("js-nav-menu");
   const menuContainer = document.getElementById("js-menu-container");
   const toggleLines = document.querySelectorAll(
