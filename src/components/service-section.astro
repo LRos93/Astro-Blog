@@ -1,0 +1,38 @@
+---
+import Service from "./service.astro";
+---
+
+<section class="service-container">
+  <h1 class="section-title">Services</h1>
+  <div class="services-wrapper">
+    <Service serviceName="Branding" serviceDescription="Lorem ipsum dolor sit amet" serviceImage="test-2.webp" />
+    <Service serviceName="Web" serviceDescription="Lorem ipsum dolor sit amet" serviceImage="test-3.webp" />
+    <Service serviceName="Packaging" serviceDescription="Lorem ipsum dolor sit amet" serviceImage="test-background.png" />
+</div>
+</section>
+
+<style>
+
+    .service-container {
+        background-color: var(--primary-color);
+        padding: 120px 160px 120px 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 120px;
+        margin-bottom: 120px;
+    }
+
+    .section-title {
+        color: var(--background);
+        text-align: center;
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .services-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+    }
+</style>

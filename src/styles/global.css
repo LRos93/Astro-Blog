@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Hando";
-  src: url(public/fonts/Hando/Hando-Regular.woff) format("woff");
+  src: url(fonts/Hando/Hando-Regular.woff) format("woff");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Hando";
-  src: url(public/fonts/Hando/Hando-SemiBold.woff) format("woff");
+  src: url(fonts/Hando/Hando-SemiBold.woff) format("woff");
   font-weight: 600;
 }
 
